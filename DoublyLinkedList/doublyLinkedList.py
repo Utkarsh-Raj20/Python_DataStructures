@@ -117,15 +117,4 @@ class DoublyLinkedList:
 
 
 if __name__ == "__main__":
-    l1 = DoublyLinkedList()
-    l1.append(2)
-    l1.append(3)
-    l1.push(1)
-    # l1.printList()
-
-    l2_list = [8, 6, 9, 5, 4, 7, 5, 2]
-    l2 = DoublyLinkedList(l2_list)
-    l2.insertAt(2, 0)
-    l2.deleteNode(7)
-    l2.circular()
-    l2.printList()
+    pass

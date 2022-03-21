@@ -121,13 +121,4 @@ class LinkedList:
 
 
 if __name__ == "__main__":
-
-    l1_list = [1, 2, 3, 4, 5, 6]
-    l1 = LinkedList(l1_list)
-    l1.circular()
-
-    l2 = LinkedList()
-    l2.append(1)
-
-    l1.printList()
-    l2.printList()
+    pass
