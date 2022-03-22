@@ -7,39 +7,45 @@ class Node:
 class LinkedList:
     def __init__(self, list=None):
         self.values = list
+        self.length = 0
         self.head = self.createList()
 
-    # *creating list from given list
+    # ~ creating list from given list
     def createList(self):
         if self.values == None:
             self.head = None
         else:
             self.head = Node(self.values[0])
-            tail = self.head
+            self.length = 1
             for x in range(1, len(self.values)):
                 self.append(self.values[x])
             return self.head
+    
+    # ~ Returning the length of the list
+    def size(self):
+        return self.length
 
-    # *Inserting element at start of Linked List
+    # ~ Inserting element at start of Linked List
     def push(self, new_data):
         new_node = Node(new_data)
         new_node.next = self.head
         self.head = new_node
 
-    # *Inserting element at end of Linked List
+    # ~ Inserting element at end of Linked List
     def append(self, new_data):
         new_node = Node(new_data)
 
         if self.head == None:
             self.head = new_node
-
+            self.length+=1
         else:
             tail = self.head
             while tail.next:
                 tail = tail.next
             tail.next = new_node
+            self.length+=1
 
-    # *Inserting after specific node
+    # ~ Inserting after specific node
     def insertAfter(self, prev_data, new_data):
         new_node = Node(new_data)
         prev_node = self.head
@@ -54,7 +60,7 @@ class LinkedList:
         new_node.next = prev_node.next
         prev_node.next = new_node
 
-    # *Deleting a specific node
+    # ~ Deleting a specific node
     def deleteNode(self, key):
         temp = self.head
 
@@ -76,7 +82,7 @@ class LinkedList:
         prev.next = temp.next
         temp = None
 
-    # *Deleting at specific position
+    # ~ Deleting at specific position
     def deleteNodeAt(self, position):
         if self.head is None:
             return
@@ -100,7 +106,7 @@ class LinkedList:
                     return
         print("Index exceeds the size of the linked list")
 
-    # *Printing the Linked List
+    # ~ Printing the Linked List
     def printList(self):
         temp = self.head
         while temp:
@@ -112,7 +118,7 @@ class LinkedList:
         if temp == None:
             print("None")
 
-    # *Makes the linked list a circular Linked list
+    # ~ Makes the linked list a circular Linked list
     def circular(self):
         tail = self.head
         while tail.next:

@@ -11,7 +11,7 @@ class DoublyLinkedList:
         self.values = list
         self.head = self.createList()
 
-    # * make Linkedlist from given list
+    # ~ make Linkedlist from given list
     def createList(self):
         if self.values == None:
             self.head = None
@@ -22,7 +22,7 @@ class DoublyLinkedList:
                 self.append(self.values[x])
             return self.head
 
-    # * push a element at start
+    # ~ push a element at start
     def push(self, new_data):
         if self.head is None:
             new_node = Node(new_data)
@@ -33,7 +33,7 @@ class DoublyLinkedList:
             self.head.prev = new_node
             self.head = new_node
 
-    # * append a element at end
+    # ~ append a element at end
     def append(self, new_data):
         new_node = Node(new_data)
         if self.head == None:
@@ -46,7 +46,7 @@ class DoublyLinkedList:
             new_node.prev = tail
             self.tail = new_node
 
-    # * insert a element at a specific position
+    # ~ insert a element at a specific position
     def insertAt(self, index, data):
         new_node = Node(data)
         if index == 0:
@@ -63,7 +63,7 @@ class DoublyLinkedList:
             temp = temp.next
             count += 1
 
-    # * delete a node at a specific position
+    # ~ delete a node at a specific position
     def deleteAtIndex(self, index=None):
         if index is None:
             return
@@ -82,7 +82,7 @@ class DoublyLinkedList:
             temp = temp.next
             count += 1
 
-    # * delete a specific Node
+    # ~ delete a specific Node
     def deleteNode(self, data):
         temp = self.head
         while temp:
@@ -93,7 +93,7 @@ class DoublyLinkedList:
             temp = temp.next
         print(f"'{data}' dose not exist in the linked list")
 
-    # * make the list circular
+    # ~ make the list circular
     def circular(self):
         self.tail.next = self.head
         self.head.prev = self.tail
