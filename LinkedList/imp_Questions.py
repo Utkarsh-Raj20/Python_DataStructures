@@ -10,7 +10,7 @@ class ImpConcepts(LinkedList):
         # checking for edge cases
         if self.head.next == None:
             return None
-        elif n == self.length:
+        elif n == self.size():
             self.head = self.head.next
 
         # finding the index to search in the list
@@ -21,33 +21,89 @@ class ImpConcepts(LinkedList):
             prev = prev.next
             i += 1
         prev.next = prev.next.next
+    
 
-    # todo Reverse A Linked List
-    # ~ ITERATIVE
-    def reverseIterate(self):
+    # ------------------------------------------------------------------------#
+
+
+    # ~ Reverse A Linked List
+
+    # * ITERATIVE
+    def reverseIterate(self, head=None):
         prev = None
-        curr = self.head
+
+        # checking if head is given or not
+        if head is None:
+            curr = self.head
+        else:
+            curr = head
+
+        # main reverse loop
         while curr is not None:
             next = curr.next
             curr.next = prev
             prev = curr
             curr = next
-        self.head = prev
+        
+        # checking if head is given or not
+        if head is None:
+            self.head = prev
+        else:
+            head = prev
+            return head
 
-    # ~ RECURSIVE
+    # * RECURSIVE
     def reverseRecursive(self, head):
+
+        # edge cases
         if head == None or head.next == None:
             return head
 
+        # recursice calls
         new_head = self.reverseRecursive(head.next)
         head.next.next = head
         head.next = None
-        head = new_head
-
-    # todo Check If The List Is A Palindrome
+        return new_head
 
 
-l = ImpConcepts([5, 7, 5, 9, 6, 5, 5, 2])
+    # ------------------------------------------------------------------------#
+
+
+    # ~ Check If The List Is A Palindrome
+
+    def isPalindrome(self):
+        firstHalfEnd = self.middle()
+        secondHalf = self.reverseIterate(firstHalfEnd.next)
+        firstHalf = self.head
+        while secondHalf:
+            if secondHalf.data != firstHalf.data:
+                return False
+            else:
+                secondHalf = secondHalf.next
+                firstHalf = firstHalf.next
+        return True
+
+    # * finding the middle of the linked list
+    def middle(self):
+        turtle = self.head
+        hare = self.head
+        while hare:
+            if hare.next is None or hare.next.next is None:
+                return turtle
+            turtle = turtle.next
+            hare = hare.next.next
+
+
+    
+l = ImpConcepts([1, 2, 2, 1])
+print("Original List:", end=" ")
 l.printList()
-l.head = l.reverseRecursive(l.head)
+# l.reverseIterate()  #? Iterative
+l.head = l.reverseRecursive(l.head) #? Recursive
+print("Reversed List:", end=" ")
 l.printList()
+
+if l.isPalindrome:
+    print("So this is a Palindrome Linked List")
+else:
+    print("So this is not a Palindrome")
