@@ -2,29 +2,27 @@ from LinkedList import LinkedList
 
 
 class ImpConcepts(LinkedList):
-    def __init__(self, list=None):
-        super().__init__(list)
+    def __init__(self, lis=None):
+        super().__init__(lis)
 
     # ~ Delete Nth Node From Last
     def deleteFromLast(self, n):
         # checking for edge cases
-        if self.head.next == None:
+        if self.head.next is None:
             return None
         elif n == self.size():
             self.head = self.head.next
 
         # finding the index to search in the list
-        indexToSearch = self.length - n
+        index_to_search = self.length - n
         prev = self.head
         i = 1
-        while i < indexToSearch:
+        while i < index_to_search:
             prev = prev.next
             i += 1
         prev.next = prev.next.next
-    
 
     # ------------------------------------------------------------------------#
-
 
     # ~ Reverse A Linked List
 
@@ -44,7 +42,7 @@ class ImpConcepts(LinkedList):
             curr.next = prev
             prev = curr
             curr = next
-        
+
         # checking if head is given or not
         if head is None:
             self.head = prev
@@ -56,31 +54,29 @@ class ImpConcepts(LinkedList):
     def reverseRecursive(self, head):
 
         # edge cases
-        if head == None or head.next == None:
+        if head is None or head.next is None:
             return head
 
-        # recursice calls
+        # recursive calls
         new_head = self.reverseRecursive(head.next)
         head.next.next = head
         head.next = None
         return new_head
 
-
     # ------------------------------------------------------------------------#
-
 
     # ~ Check If The List Is A Palindrome
 
     def isPalindrome(self):
-        firstHalfEnd = self.middle()
-        secondHalf = self.reverseIterate(firstHalfEnd.next)
-        firstHalf = self.head
-        while secondHalf:
-            if secondHalf.data != firstHalf.data:
+        first_half_end = self.middle()
+        second_half = self.reverseIterate(first_half_end.next)
+        first_half = self.head
+        while second_half:
+            if second_half.data != first_half.data:
                 return False
             else:
-                secondHalf = secondHalf.next
-                firstHalf = firstHalf.next
+                second_half = second_half.next
+                first_half = first_half.next
         return True
 
     # * finding the middle of the linked list
@@ -94,12 +90,15 @@ class ImpConcepts(LinkedList):
             hare = hare.next.next
 
 
-    
-l = ImpConcepts([1, 2, 2, 1])
+n = int(input("size of list: "))
+print("Enter the items of list: ", end="")
+test = list(map(str, input().split()))
+
+l = ImpConcepts(test)
 print("Original List:", end=" ")
 l.printList()
 # l.reverseIterate()  #? Iterative
-l.head = l.reverseRecursive(l.head) #? Recursive
+l.head = l.reverseRecursive(l.head)  # ? Recursive
 print("Reversed List:", end=" ")
 l.printList()
 

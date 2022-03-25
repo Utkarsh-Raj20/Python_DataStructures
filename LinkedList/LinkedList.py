@@ -5,14 +5,14 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self, list=None):
-        self.values = list
+    def __init__(self, lis=None):
+        self.values = lis
         self.length = 0
         self.head = self.createList()
 
     # ~ creating list from given list
     def createList(self):
-        if self.values == None:
+        if self.values is None:
             self.head = None
         else:
             self.head = Node(self.values[0])
@@ -35,15 +35,15 @@ class LinkedList:
     def append(self, new_data):
         new_node = Node(new_data)
 
-        if self.head == None:
+        if self.head is None:
             self.head = new_node
-            self.length+=1
+            self.length += 1
         else:
             tail = self.head
             while tail.next:
                 tail = tail.next
             tail.next = new_node
-            self.length+=1
+            self.length += 1
 
     # ~ Inserting after specific node
     def insertAfter(self, prev_data, new_data):
@@ -62,6 +62,7 @@ class LinkedList:
 
     # ~ Deleting a specific node
     def deleteNode(self, key):
+        global prev
         temp = self.head
 
         if temp is not None:
@@ -76,7 +77,7 @@ class LinkedList:
             prev = temp
             temp = temp.next
 
-        if temp == None:
+        if temp is None:
             return
 
         prev.next = temp.next
@@ -115,7 +116,7 @@ class LinkedList:
             if temp == self.head:
                 print(f"{temp.data}(HEAD)")
                 break
-        if temp == None:
+        if temp is None:
             print("None")
 
     # ~ Makes the linked list a circular Linked list
