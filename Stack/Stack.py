@@ -1,5 +1,4 @@
 # ~ Implementation of Stack using linked list
-import collections
 class Node:
     def __init__(self, data) -> None:
         self.data = data
@@ -67,7 +66,7 @@ class LinkedStack:
         if self.isEmpty():
             print("Peeking from an Empty Stack")
             return
-            
+
         # * returning the topmost data without removing the element
         return self.head.next.data
 
