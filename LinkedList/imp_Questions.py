@@ -22,7 +22,7 @@ class ImpConcepts(LinkedList):
             i += 1
         prev.next = prev.next.next
 
-    # ------------------------------------------------------------------------#
+    # ~ ------------------------------------------------------------------------#
 
     # ~ Reverse A Linked List
 
@@ -63,7 +63,7 @@ class ImpConcepts(LinkedList):
         head.next = None
         return new_head
 
-    # ------------------------------------------------------------------------#
+    # ~ ------------------------------------------------------------------------#
 
     # ~ Check If The List Is A Palindrome
 
@@ -97,7 +97,7 @@ test = list(map(str, input().split()))
 l = ImpConcepts(test)
 print("Original List:", end=" ")
 l.printList()
-# l.reverseIterate()  #? Iterative
+# l.reverseIterate()  # ? Iterative
 l.head = l.reverseRecursive(l.head)  # ? Recursive
 print("Reversed List:", end=" ")
 l.printList()
